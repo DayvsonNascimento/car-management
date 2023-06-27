@@ -1,3 +1,5 @@
+import { Container, RowCell } from './CarRow.styled';
+
 interface CarRowProps {
   carData: {
     model: string;
@@ -19,16 +21,20 @@ const CarRow = ({
     transportationCosts,
   },
 }: CarRowProps) => {
+  const totalCost = (
+    productionCost + transportationCosts || 0
+  ).toLocaleString();
+
   return (
-    <tr>
-      <td>{model}</td>
-      <td>{brand}</td>
-      <td>{value}</td>
-      <td>{mainColor}</td>
-      <td>{brand}</td>
-      <td>{productionCost}</td>
-      <td>{transportationCosts}</td>
-    </tr>
+    <Container>
+      <RowCell>{model}</RowCell>
+      <RowCell>{brand}</RowCell>
+      <RowCell>{mainColor}</RowCell>
+      <RowCell>{value?.toLocaleString()}</RowCell>
+      <RowCell>{productionCost?.toLocaleString()}</RowCell>
+      <RowCell>{transportationCosts?.toLocaleString()}</RowCell>
+      <RowCell>{totalCost}</RowCell>
+    </Container>
   );
 };
 

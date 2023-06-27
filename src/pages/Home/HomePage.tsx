@@ -1,11 +1,15 @@
 import CarsTable from '../../components/CarsTable/CarsTable';
 
-import { Container } from './HomePage.styles';
+import { Container, TableContainer, Title } from './HomePage.styled';
 
 const HomePage = () => {
   return (
     <Container>
-      <CarsTable />
+      <Title>List of Cars</Title>
+
+      <TableContainer>
+        <CarsTable />
+      </TableContainer>
     </Container>
   );
 };

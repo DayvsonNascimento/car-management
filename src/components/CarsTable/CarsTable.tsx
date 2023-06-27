@@ -7,7 +7,7 @@ import {
   TableRow,
   HeaderCell,
   Body,
-} from './CarsTable.style';
+} from './CarsTable.styled';
 
 const cars = [
   {
