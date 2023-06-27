@@ -1,13 +1,6 @@
-import CarCard from '../CarRow/CarRow';
+import CarCard from '../CarRow/CarRow'
 
-import {
-  Container,
-  Table,
-  TableHeader,
-  TableRow,
-  HeaderCell,
-  Body,
-} from './CarsTable.styled';
+import { Container, Table, TableHeader, TableRow, HeaderCell, Body } from './CarsTable.styled'
 
 const cars = [
   {
@@ -34,7 +27,7 @@ const cars = [
     productionCost: 30000,
     transportationCosts: 5000,
   },
-];
+]
 
 const CarsTable = () => {
   return (
@@ -47,9 +40,7 @@ const CarsTable = () => {
             <HeaderCell>Main Color</HeaderCell>
             <HeaderCell style={{ width: '12%' }}>Value</HeaderCell>
             <HeaderCell>Production Cost</HeaderCell>
-            <HeaderCell style={{ width: '20%' }}>
-              Transportation Cost
-            </HeaderCell>
+            <HeaderCell style={{ width: '20%' }}>Transportation Cost</HeaderCell>
             <HeaderCell>Total</HeaderCell>
           </TableRow>
         </TableHeader>
@@ -60,7 +51,7 @@ const CarsTable = () => {
         </Body>
       </Table>
     </Container>
-  );
-};
+  )
+}
 
-export default CarsTable;
+export default CarsTable
