@@ -16,7 +16,6 @@ export const ContentContainer = styled.div`
   width: 80%;
 `;
 
-
 export const Title = styled.h1`
   text-align: center;
   color: #1b3a57;

@@ -9,7 +9,7 @@ export const Container = styled.tr`
 `;
 
 export const RowCell = styled.td`
-  padding: 10px 0;
+  padding: 12px 0;
   font-size: 16px;
   color: #737373;
 `;
