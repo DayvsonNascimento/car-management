@@ -6,11 +6,16 @@ export const Container = styled.div`
   margin-top: 5rem;
 `;
 
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const TableContainer = styled.div`
   display: flex;
   align-itens: center;
   justify-content: center;
-  widtj: 100%;
+  width: 100%;
 `;
 
 export const Title = styled.h1`
