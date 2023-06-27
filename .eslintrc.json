@@ -22,7 +22,8 @@
     ],
     "rules": {
         "no-duplicate-imports": "error",
-        "spaced-comment": "error"
+        "spaced-comment": "error",
+        "react/react-in-jsx-scope": "off"
     },
     "settings": {
         "import/resolver": {
