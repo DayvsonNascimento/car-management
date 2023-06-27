@@ -45,9 +45,11 @@ const CarsTable = () => {
             <HeaderCell>Model</HeaderCell>
             <HeaderCell>Brand</HeaderCell>
             <HeaderCell>Main Color</HeaderCell>
-            <HeaderCell>Value</HeaderCell>
+            <HeaderCell style={{ width: '12%' }}>Value</HeaderCell>
             <HeaderCell>Production Cost</HeaderCell>
-            <HeaderCell>Transportation Cost</HeaderCell>
+            <HeaderCell style={{ width: '20%' }}>
+              Transportation Cost
+            </HeaderCell>
             <HeaderCell>Total</HeaderCell>
           </TableRow>
         </TableHeader>

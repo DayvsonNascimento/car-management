@@ -1,12 +1,7 @@
 import CarsTable from '../../components/CarsTable';
 import Button from '../../components/Button';
 
-import {
-  Container,
-  ContentContainer,
-  TableContainer,
-  Title,
-} from './HomePage.styled';
+import { Container, ContentContainer, Title } from './HomePage.styled';
 
 const HomePage = () => {
   return (
@@ -16,9 +11,7 @@ const HomePage = () => {
       <ContentContainer>
         <Button disabled={false} text="Add New" />
 
-        <TableContainer>
-          <CarsTable />
-        </TableContainer>
+        <CarsTable />
       </ContentContainer>
     </Container>
   );

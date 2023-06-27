@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 24px;
-  width: 80%;
+  width: 100%;
   background-color: #ffffff;
   box-shadow: 0 1px 1px 1px #e3e3e3;
   border-radius: 5px;
@@ -20,7 +20,6 @@ export const HeaderCell = styled.th`
   text-align: left;
   width: 15.5%;
   color: #1b3a57;
-
 
 `;
 

@@ -10,7 +10,7 @@ export const CustomButton = styled.button`
   width: 108px;
   background-color: rgb(29, 161, 242);
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 14px;
   color: white;
   padding: 8px;
@@ -19,5 +19,9 @@ export const CustomButton = styled.button`
   &:disabled {
     cursor: auto;
     background-color: rgb(29, 161, 242, 0.5);
+  }
+
+  &:hover {
+    background-color: rgb(19 144 221);
   }
 `;
