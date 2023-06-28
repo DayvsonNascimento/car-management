@@ -57,16 +57,3 @@ export const SignUpBox = styled.div`
   font-size: 14px;
   background-color: #f5f8fa;
 `;
-
-export const LoginText = styled.p`
-  color: rgb(27, 149, 224);
-  font-size: 13px;
-  margin-bottom: 0;
-`;
-
-export const Link = styled.a`
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: 800;
-`;

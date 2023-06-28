@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Form, Label, Input, Button, Title, LoginText, Link } from './AddCar.styled';
+import { Form, Label, Input, Button, Title, } from './AddCar.styled';
 
 import { Container } from '../../pages/Home/HomePage.styled';
 
