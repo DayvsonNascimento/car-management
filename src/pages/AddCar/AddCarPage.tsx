@@ -1,4 +1,4 @@
-import AddCar from '../../components/AddCar';
+import AddCar from 'components/AddCar';
 
 const AddCarPage = () => {
   return <AddCar />;

@@ -16,6 +16,12 @@ export const ContentContainer = styled.div`
   width: 80%;
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+`;
+
 export const Title = styled.h1`
   text-align: center;
   color: #1b3a57;

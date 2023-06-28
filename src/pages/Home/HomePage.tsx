@@ -1,15 +1,16 @@
-import CarsTable from '../../components/CarsTable';
-import Button from '../../components/Button';
+import CarsTable from 'components/CarsTable';
+import Button from 'components/Button';
 
-import { Container, ContentContainer, Title } from './HomePage.styled';
+import { Container, ContentContainer, ButtonContainer, Title } from './HomePage.styled';
 
 const HomePage = () => {
   return (
     <Container>
-      <Title>List of Cars</Title>
-
       <ContentContainer>
-        <Button disabled={false} text="Add New" />
+        <ButtonContainer>
+          <Button disabled={false} text='Add new' />
+          <Button disabled={false} text='Update' />
+        </ButtonContainer>
 
         <CarsTable />
       </ContentContainer>
