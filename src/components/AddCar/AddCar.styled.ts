@@ -29,31 +29,31 @@ export const Input = styled.input`
   cursor: text;
 `;
 
-export const Button = styled.button`
-  background-color: rgb(29, 161, 242);
-  cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 10px;
+export const Select = styled.select`
+  margin: 5px 0px 15px 0px;
+  padding-left: 4.5px;
+  padding-right: 8px;
+  width: auto;
+  height: 35px;
   border-radius: 4px;
-  font-size: 16px;
-  color: white;
-  padding: 8px;
-  border: none;
-  font-weight: bold;
+  border: 1px solid #d4d4d4;
+`;
 
-  &:disabled {
-    cursor: auto;
-    background-color: rgb(29, 161, 242, 0.5);
-  }
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: 1rem;
 `;
 
 export const Title = styled.h2`
   margin: 10px 0 20px;
 `;
 
-export const SignUpBox = styled.div`
-  width: 100%;
-  margin-top: 24px;
+export const ErrorText = styled.div`
+  margin-top: 0;
   font-size: 14px;
-  background-color: #f5f8fa;
+  text-align: left;
+  color: #f02849;
+  margin-bottom: 5px;
+  margin-top: -14px;
 `;

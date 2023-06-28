@@ -3,6 +3,8 @@ import CarCard from '../CarRow/CarRow';
 
 import { Container, Table, TableHeader, TableRow, HeaderCell, TableBody } from './CarsTable.styled';
 
+import { headerValues, columnsDef } from 'utils/consts';
+
 const cars = [
   {
     model: 'Mustang',
@@ -28,26 +30,6 @@ const cars = [
     productionCost: 30000,
     transportationCost: 5000,
   },
-];
-
-const headerValues = [
-  'Model',
-  'Brand',
-  'Main Color',
-  'Value',
-  'Production Cost',
-  'Transportation Cost',
-  'Total',
-];
-
-const columnsDef = [
-  'model',
-  'brand',
-  'mainColor',
-  'value',
-  'productionCost',
-  'transportationCost',
-  'totalCost',
 ];
 
 const CarsTable = () => {

@@ -9,7 +9,7 @@ interface ButtonProps {
 const Button = ({ disabled, text, action }: ButtonProps) => {
   return (
     <Container>
-      <CustomButton disabled={disabled} onClick={action}>
+      <CustomButton type='button' disabled={disabled} onClick={action}>
         {text}
       </CustomButton>
     </Container>
