@@ -19,7 +19,6 @@ export const columnsDef = [
 ];
 
 export const popularColors = [
-  '',
   'Black',
   'Blue',
   'Brown',
@@ -33,7 +32,6 @@ export const popularColors = [
 ];
 
 export const carBrands = [
-  '',
   'Audi',
   'BMW',
   'Chevrolet',

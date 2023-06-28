@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import DefaulInput from 'components/Input/DefaultInput';
+import CustomSelect from 'components/Input/CustomSelect/Select.styled';
 import Button from 'components/Button/Button';
 
 import { Form, Label, Input, Title, ButtonContainer, Select, ErrorText } from './AddCar.styled';
@@ -28,14 +30,25 @@ const AddCarPage = () => {
     transportationCost: '',
   });
 
-  const handleChange = (event: Event, property: string) => {
-    console.log(event.target);
-    setFormValues({ ...formValues, [property]: event.target.value });
+  const parseNumberInput = (event: Event) => {
+    const inputValue = event?.target.value;
 
-    setErrors({ ...errors, [property]: '' });
+    if (/^\d+$/.test(inputValue)) return parseInt(inputValue, 10);
   };
 
-  const handleSubmit = async () => {
+  const handleChange = (
+    property: string,
+    event: Event,
+    parse?: (event: Event) => number | undefined,
+  ) => {
+    const value = typeof parse === 'function' ? parse(event) : event?.target.value;
+
+    if (value !== undefined || event.target.value.length === 0) {
+      setFormValues({ ...formValues, [property]: value });
+    }
+  };
+
+  const handleSubmit = () => {
     const formErrors = validate(formValues);
 
     setErrors(formErrors);
@@ -48,68 +61,57 @@ const AddCarPage = () => {
       <Form>
         <Title>Add Car</Title>
 
-        <Label>Model</Label>
-        <Input
-          type='text'
+        <DefaulInput
+          label='Model'
           value={formValues.model}
-          onChange={(event: Event) => handleChange(event, 'model')}
+          onChange={(event: Event) => handleChange('model', event)}
           onFocus={() => handleFocus('model')}
-        ></Input>
-        <ErrorText>{errors.model}</ErrorText>
+          errorMessage={errors.model}
+        />
 
-        <Label>Brand</Label>
-        <Select
+        <CustomSelect
+          label='Brand'
           name='brands'
           value={formValues.brand}
-          onChange={(event: Event) => handleChange(event, 'brand')}
+          options={carBrands}
+          onChange={(event: Event) => handleChange('brand', event)}
           onFocus={() => handleFocus('brand')}
-        >
-          {carBrands.map((brand) => (
-            <option key={brand} value={brand}>
-              {brand}
-            </option>
-          ))}
-        </Select>
-        <ErrorText>{errors.brand}</ErrorText>
+          errorMessage={errors.brand}
+        />
 
-        <Label>Main Color</Label>
-        <Select
+        <CustomSelect
+          label='Main Color'
           name='colors'
           value={formValues.mainColor}
-          onChange={(event: Event) => handleChange(event, 'mainColor')}
+          options={popularColors}
+          onChange={(event: Event) => handleChange('mainColor', event)}
           onFocus={() => handleFocus('mainColor')}
-        >
-          {popularColors.map((color) => (
-            <option key={color} value={color}>
-              {color}
-            </option>
-          ))}
-        </Select>
-        <ErrorText>{errors.mainColor}</ErrorText>
+          errorMessage={errors.mainColor}
+        />
 
-        <Label>Value</Label>
-        <Input
-          value={formValues?.value || ''}
-          onChange={(event: Event) => handleChange(event, 'value')}
+        <DefaulInput
+          label='Value'
+          value={formValues.value}
+          onChange={(event: Event) => handleChange('value', event, parseNumberInput)}
           onFocus={() => handleFocus('value')}
-        ></Input>
-        <ErrorText>{errors.value}</ErrorText>
+          errorMessage={errors.value}
+        />
 
-        <Label>Production Cost</Label>
-        <Input
-          value={formValues?.productionCost || ''}
-          onChange={(event: Event) => handleChange(event, 'productionCost')}
+        <DefaulInput
+          label='Production Cost'
+          value={formValues.productionCost}
+          onChange={(event: Event) => handleChange('productionCost', event, parseNumberInput)}
           onFocus={() => handleFocus('productionCost')}
-        ></Input>
-        <ErrorText>{errors.productionCost}</ErrorText>
+          errorMessage={errors.productionCost}
+        />
 
-        <Label>Transportation Cost</Label>
-        <Input
-          value={formValues?.transportationCost || ''}
-          onChange={(event: Event) => handleChange(event, 'transportationCost')}
+        <DefaulInput
+          label='Transportation Cost'
+          value={formValues.transportationCost}
+          onChange={(event: Event) => handleChange('transportationCost', event, parseNumberInput)}
           onFocus={() => handleFocus('transportationCost')}
-        ></Input>
-        <ErrorText>{errors.transportationCost}</ErrorText>
+          errorMessage={errors.transportationCost}
+        />
 
         <ButtonContainer>
           <Button disabled={false} text='Save' action={handleSubmit} />
