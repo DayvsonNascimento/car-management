@@ -4,8 +4,8 @@ import DefaulInput from 'components/Input/DefaultInput';
 import CustomSelect from 'components/Input/CustomSelect/Select.styled';
 import Button from 'components/Button/Button';
 
-import { Form, Label, Input, Title, ButtonContainer, Select, ErrorText } from './AddCar.styled';
-import { Container } from '../../pages/Home/HomePage.styled';
+import { Form, Title, ButtonContainer } from './AddCar.styled';
+import { Container } from 'pages/Home/HomePage.styled';
 
 import { carBrands, popularColors } from 'utils/consts';
 import { validate } from 'utils/validators/addNewCarValidator';
