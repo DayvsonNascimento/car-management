@@ -1,5 +1,5 @@
 import HomePage from 'pages/Home/HomePage';
-import AddCarPage from 'components/AddCar/AddCar';
+import AddCarPage from 'pages/AddCar/AddCarPage';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 

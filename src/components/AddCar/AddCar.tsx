@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import DefaulInput from 'components/Input/DefaultInput';
 import CustomSelect from 'components/Input/CustomSelect/Select.styled';
 import Button from 'components/Button/Button';
 
 import { Form, Title, ButtonContainer } from './AddCar.styled';
-import { Container } from 'pages/Home/HomePage.styled';
 
 import { carBrands, popularColors } from 'utils/consts';
 import { validate } from 'utils/validators/addNewCarValidator';
@@ -29,6 +30,7 @@ const AddCarPage = () => {
     productionCost: '',
     transportationCost: '',
   });
+  const navigate = useNavigate();
 
   const parseNumberInput = (event: Event) => {
     const inputValue = event?.target.value;
@@ -57,67 +59,72 @@ const AddCarPage = () => {
   const handleFocus = (property: string) => setErrors({ ...errors, [property]: '' });
 
   return (
-    <Container>
-      <Form>
-        <Title>Add Car</Title>
+    <Form>
+      <Title>Add Car</Title>
 
-        <DefaulInput
-          label='Model'
-          value={formValues.model}
-          onChange={(event: Event) => handleChange('model', event)}
-          onFocus={() => handleFocus('model')}
-          errorMessage={errors.model}
+      <DefaulInput
+        label='Model'
+        value={formValues.model}
+        onChange={(event: Event) => handleChange('model', event)}
+        onFocus={() => handleFocus('model')}
+        errorMessage={errors.model}
+      />
+
+      <CustomSelect
+        label='Brand'
+        name='brands'
+        value={formValues.brand}
+        options={carBrands}
+        onChange={(event: Event) => handleChange('brand', event)}
+        onFocus={() => handleFocus('brand')}
+        errorMessage={errors.brand}
+      />
+
+      <CustomSelect
+        label='Main Color'
+        name='colors'
+        value={formValues.mainColor}
+        options={popularColors}
+        onChange={(event: Event) => handleChange('mainColor', event)}
+        onFocus={() => handleFocus('mainColor')}
+        errorMessage={errors.mainColor}
+      />
+
+      <DefaulInput
+        label='Value'
+        value={formValues.value}
+        onChange={(event: Event) => handleChange('value', event, parseNumberInput)}
+        onFocus={() => handleFocus('value')}
+        errorMessage={errors.value}
+      />
+
+      <DefaulInput
+        label='Production Cost'
+        value={formValues.productionCost}
+        onChange={(event: Event) => handleChange('productionCost', event, parseNumberInput)}
+        onFocus={() => handleFocus('productionCost')}
+        errorMessage={errors.productionCost}
+      />
+
+      <DefaulInput
+        label='Transportation Cost'
+        value={formValues.transportationCost}
+        onChange={(event: Event) => handleChange('transportationCost', event, parseNumberInput)}
+        onFocus={() => handleFocus('transportationCost')}
+        errorMessage={errors.transportationCost}
+      />
+
+      <ButtonContainer>
+        <Button
+          className={'cancel-button'}
+          disabled={false}
+          text='Cancel'
+          action={() => navigate('/')}
         />
 
-        <CustomSelect
-          label='Brand'
-          name='brands'
-          value={formValues.brand}
-          options={carBrands}
-          onChange={(event: Event) => handleChange('brand', event)}
-          onFocus={() => handleFocus('brand')}
-          errorMessage={errors.brand}
-        />
-
-        <CustomSelect
-          label='Main Color'
-          name='colors'
-          value={formValues.mainColor}
-          options={popularColors}
-          onChange={(event: Event) => handleChange('mainColor', event)}
-          onFocus={() => handleFocus('mainColor')}
-          errorMessage={errors.mainColor}
-        />
-
-        <DefaulInput
-          label='Value'
-          value={formValues.value}
-          onChange={(event: Event) => handleChange('value', event, parseNumberInput)}
-          onFocus={() => handleFocus('value')}
-          errorMessage={errors.value}
-        />
-
-        <DefaulInput
-          label='Production Cost'
-          value={formValues.productionCost}
-          onChange={(event: Event) => handleChange('productionCost', event, parseNumberInput)}
-          onFocus={() => handleFocus('productionCost')}
-          errorMessage={errors.productionCost}
-        />
-
-        <DefaulInput
-          label='Transportation Cost'
-          value={formValues.transportationCost}
-          onChange={(event: Event) => handleChange('transportationCost', event, parseNumberInput)}
-          onFocus={() => handleFocus('transportationCost')}
-          errorMessage={errors.transportationCost}
-        />
-
-        <ButtonContainer>
-          <Button disabled={false} text='Save' action={handleSubmit} />
-        </ButtonContainer>
-      </Form>
-    </Container>
+        <Button disabled={false} text='Save' action={handleSubmit} />
+      </ButtonContainer>
+    </Form>
   );
 };
 

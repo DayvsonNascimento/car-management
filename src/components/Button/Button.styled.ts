@@ -14,8 +14,8 @@ export const CustomButton = styled.button`
   font-size: 14px;
   color: white;
   padding: 8px;
-  border: none;
   font-weight: 700;
+  border: 1px solid rgb(29, 161, 242) !important;
 
   &:disabled {
     cursor: auto;
