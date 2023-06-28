@@ -1,29 +1,60 @@
 import styled from 'styled-components';
 
-export const Label = styled.label`
+const ERROR_COLOR = '#e02924';
+const STANDARD_COLOR = '#656d76';
+
+interface LabelProps {
+  active: boolean;
+  error: boolean;
+}
+
+export const Container = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
+export const Label = styled.label<LabelProps>`
   text-align: left;
   margin-bottom: 2px;
-  font-size: 14px;
+  font-size: 10px;
+
+  z-index: 2;
+  position: absolute;
+  left: 0.5rem;
+  font-weight: 300;
+  top: 1rem;
+  font-size: ${({ active }) => (active ? '.7rem' : '0.9rem')};
+  color: ${({ error }) => (error ? ERROR_COLOR : STANDARD_COLOR)};
+  letter-spacing: 0.005625rem;
+  pointer-events: none;
+  transition: all 0.2s ease-in;
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    width: 88%;
+    background: #fff;
+  }
+
+  transform: ${({ active }) => (active ? ' translateY(-.5rem)' : '')};
 `;
 
 export const Input = styled.input`
   margin: 5px 0px 15px 0px;
-  padding-left: 8px;
-  padding-right: 8px;
-  width: auto;
-  height: 30px;
+  padding: 10px 8px 0 6px;
+  width: 100%;
+  height: 40px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
+  box-sizing: border-box;
 
   cursor: text;
 `;
 
 export const Select = styled.select`
   margin: 5px 0px 15px 0px;
-  padding-left: 4.5px;
-  padding-right: 8px;
-  width: auto;
-  height: 35px;
+  padding: 10px 8px 0 2.5px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
 `;

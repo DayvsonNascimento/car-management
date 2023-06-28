@@ -1,4 +1,6 @@
-import { Label, Input, ErrorText } from '../Input.styled';
+import { useState } from 'react';
+
+import { Container, Label, Input, ErrorText } from '../Input.styled';
 
 type Event = React.ChangeEvent<HTMLInputElement>;
 
@@ -12,12 +14,30 @@ interface DefaulInputProps {
 }
 
 const DefaulInput = ({ label, value, errorMessage, onChange, onFocus }: DefaulInputProps) => {
+  const [active, setActive] = useState(false);
+
+  const handleFocus = () => {
+    setActive(true);
+
+    if (typeof onFocus === 'function') onFocus();
+  };
+
+  const handleOnBlur = () => setActive(false);
+
   return (
-    <>
-      <Label>{label}</Label>
-      <Input value={value || ''} onChange={onChange} onFocus={onFocus} />
+    <Container>
+      <Label htmlFor={label} error={!!errorMessage} active={active || !!value || !!errorMessage}>
+        {label}
+      </Label>
+      <Input
+        name={label}
+        value={value || ''}
+        onChange={onChange}
+        onFocus={handleFocus}
+        onBlur={handleOnBlur}
+      />
       <ErrorText>{errorMessage}</ErrorText>
-    </>
+    </Container>
   );
 };
 

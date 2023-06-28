@@ -1,4 +1,6 @@
-import { Label, Select, ErrorText } from '../Input.styled';
+import { useState } from 'react';
+
+import { Container, Label, Select, ErrorText } from '../Input.styled';
 
 type Event = React.ChangeEvent<HTMLSelectElement>;
 
@@ -21,10 +23,28 @@ const CustomSelect = ({
   onChange,
   onFocus,
 }: DefaulInputProps) => {
+  const [active, setActive] = useState(false);
+
+  const handleFocus = () => {
+    setActive(true);
+
+    if (typeof onFocus === 'function') onFocus();
+  };
+
+  const handleOnBlur = () => setActive(false);
+
   return (
-    <>
-      <Label>{label}</Label>
-      <Select name={name} value={value} onChange={onChange} onFocus={onFocus}>
+    <Container>
+      <Label htmlFor={label} error={!!errorMessage} active={active || !!value || !!errorMessage}>
+        {label}
+      </Label>
+      <Select
+        name={name}
+        value={value}
+        onChange={onChange}
+        onFocus={handleFocus}
+        onBlur={handleOnBlur}
+      >
         <option label=' ' />
         {options.map((option) => (
           <option key={option} value={option}>
@@ -33,7 +53,7 @@ const CustomSelect = ({
         ))}
       </Select>
       <ErrorText>{errorMessage}</ErrorText>
-    </>
+    </Container>
   );
 };
 
