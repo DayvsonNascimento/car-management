@@ -1,6 +1,7 @@
-import CarCard from '../CarRow/CarRow'
+import { useMemo } from 'react';
+import CarCard from '../CarRow/CarRow';
 
-import { Container, Table, TableHeader, TableRow, HeaderCell, Body } from './CarsTable.styled'
+import { Container, Table, TableHeader, TableRow, HeaderCell, TableBody } from './CarsTable.styled';
 
 const cars = [
   {
@@ -9,7 +10,7 @@ const cars = [
     mainColor: 'Red',
     value: 30000,
     productionCost: 17000,
-    transportationCosts: 5000,
+    transportationCost: 5000,
   },
   {
     model: 'Camaro',
@@ -17,7 +18,7 @@ const cars = [
     mainColor: 'Blue',
     value: 27000,
     productionCost: 20000,
-    transportationCosts: 2000,
+    transportationCost: 2000,
   },
   {
     model: 'Silverado',
@@ -25,33 +26,57 @@ const cars = [
     mainColor: 'Black',
     value: 40000,
     productionCost: 30000,
-    transportationCosts: 5000,
+    transportationCost: 5000,
   },
-]
+];
+
+const headerValues = [
+  'Model',
+  'Brand',
+  'Main Color',
+  'Value',
+  'Production Cost',
+  'Transportation Cost',
+  'Total',
+];
+
+const columnsDef = [
+  'model',
+  'brand',
+  'mainColor',
+  'value',
+  'productionCost',
+  'transportationCost',
+  'totalCost',
+];
 
 const CarsTable = () => {
+  const getCompleteCarData = useMemo(() => {
+    return cars.map((carData) => ({
+      ...carData,
+      totalCost: carData.productionCost + carData.transportationCost,
+    }));
+  }, []);
+
   return (
     <Container>
       <Table>
         <TableHeader>
           <TableRow>
-            <HeaderCell>Model</HeaderCell>
-            <HeaderCell>Brand</HeaderCell>
-            <HeaderCell>Main Color</HeaderCell>
-            <HeaderCell style={{ width: '12%' }}>Value</HeaderCell>
-            <HeaderCell>Production Cost</HeaderCell>
-            <HeaderCell style={{ width: '20%' }}>Transportation Cost</HeaderCell>
-            <HeaderCell>Total</HeaderCell>
+            {headerValues.map((value, index) => (
+              <HeaderCell key={index}>{value}</HeaderCell>
+            ))}
           </TableRow>
         </TableHeader>
-        <Body>
-          {cars?.map((car, index) => (
-            <CarCard key={index} carData={car} />
+
+        <TableBody>
+          {getCompleteCarData?.map((carData, index) => (
+            <CarCard key={index} rowData={carData} columnsDef={columnsDef} />
           ))}
-        </Body>
+        </TableBody>
       </Table>
     </Container>
-  )
-}
+  );
+};
 
-export default CarsTable
+export default CarsTable;

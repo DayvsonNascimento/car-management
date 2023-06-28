@@ -20,15 +20,22 @@ export const HeaderCell = styled.th`
   text-align: left;
   width: 15.5%;
   color: #1b3a57;
-
 `;
 
 export const TableRow = styled.tr`
   border-bottom: 1px solid #e3e3e3;
+
+  th:nth-child(4) {
+    width: 12%;
+  }
+
+  th:nth-child(6) {
+    width: 20%;
+  }
 `;
 
 export const Option = styled.option``;
 
 export const TableHeader = styled.thead``;
 
-export const Body = styled.tbody``;
+export const TableBody = styled.tbody``;
