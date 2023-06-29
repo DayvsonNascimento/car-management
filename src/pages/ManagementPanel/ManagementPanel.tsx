@@ -12,17 +12,7 @@ import { CarData } from 'interfaces/Car';
 import { TableDefinition } from 'interfaces/TableDefinition';
 
 import { carBrands, popularColors } from 'utils/consts';
-import { parseNumberInput } from 'utils/utils';
-
-const formatNumericValue = (value: number) => `$${value.toLocaleString()}`;
-
-const getTotalCost = ({
-  productionCost,
-  transportationCost,
-}: {
-  productionCost: number;
-  transportationCost: number;
-}) => formatNumericValue(productionCost + transportationCost);
+import { parseNumberInput, formatNumericValue, getTotalCost } from 'utils/utils';
 
 const columnsDef: TableDefinition[] = [
   { headerName: 'Model', field: 'model', cellRender: (item) => item.model },

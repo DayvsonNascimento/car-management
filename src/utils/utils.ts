@@ -9,3 +9,13 @@ export const hasEmptyField = (object: { [key: string]: any }) => {
 export const parseNumberInput = (inputValue: string) => {
   if (/^\d+$/.test(inputValue)) return parseInt(inputValue, 10);
 };
+
+export const formatNumericValue = (value: number) => `$${value.toLocaleString()}`;
+
+export const getTotalCost = ({
+  productionCost,
+  transportationCost,
+}: {
+  productionCost: number;
+  transportationCost: number;
+}) => formatNumericValue(productionCost + transportationCost);
