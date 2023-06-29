@@ -35,6 +35,7 @@ const AddCarForm = () => {
     productionCost: '',
     transportationCost: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const parseNumberInput = (event: Event) => {
@@ -58,6 +59,8 @@ const AddCarForm = () => {
   const handleFocus = (property: string) => setErrors({ ...errors, [property]: '' });
 
   const handleSubmit = async () => {
+    setIsLoading(true);
+
     const formErrors = validate(formValues);
 
     if (isEmpty(formErrors)) {
@@ -66,6 +69,8 @@ const AddCarForm = () => {
       navigate('/');
     } else {
       setErrors(formErrors);
+
+      setIsLoading(false);
     }
   };
 
@@ -128,12 +133,17 @@ const AddCarForm = () => {
       <ButtonContainer>
         <Button
           className={'cancel-button'}
-          disabled={false}
+          disabled={isLoading}
           text='Cancel'
           action={() => navigate('/')}
         />
 
-        <Button disabled={!isEmpty(errors)} text='Save' action={handleSubmit} />
+        <Button
+          disabled={!isEmpty(errors) || isLoading}
+          text='Save'
+          loading={isLoading}
+          action={handleSubmit}
+        />
       </ButtonContainer>
     </Form>
   );

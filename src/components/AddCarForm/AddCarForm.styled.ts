@@ -26,6 +26,11 @@ export const ButtonContainer = styled.div`
     &:hover {
       background-color: rgb(244, 246, 246);
     }
+
+    &:disabled {
+      background-color: rgb(244, 246, 246);
+    }
+
   }
 `;
 

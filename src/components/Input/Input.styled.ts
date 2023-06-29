@@ -39,7 +39,7 @@ export const Label = styled.label<LabelProps>`
 
 export const Input = styled.input`
   margin: 5px 0px 15px 0px;
-  padding: 11px 8px 0 6px;
+  padding: 11px 8px 0 6.5px;
   width: 100%;
   height: 40px;
   border-radius: 4px;
@@ -51,7 +51,7 @@ export const Input = styled.input`
 
 export const Select = styled.select`
   margin: 5px 0px 15px 0px;
-  padding: 11px 8px 0 2.5px;
+  padding: 11px 8px 0 2.7px;
   width: 100%;
   box-sizing: border-box;
   height: 40px;

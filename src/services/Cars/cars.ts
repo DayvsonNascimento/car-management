@@ -1,7 +1,5 @@
 import api from '../api';
 
-import { CarData } from 'interfaces/Car';
-
 export const fetchCarsData = async () => {
   try {
     const { data } = await api.get('/cars');
