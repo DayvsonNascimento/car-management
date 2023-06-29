@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface TableBodyProps {
+interface TableContentProps {
   $hasData: boolean;
 }
 
@@ -12,9 +12,10 @@ export const Container = styled.div`
   border-radius: 5px;
 `;
 
-export const TableContent = styled.table`
+export const TableContent = styled.table<TableContentProps>`
   width: 100%;
   border-collapse: collapse;
+  ${({ $hasData }) => ($hasData ? '' : 'height: 400px')}
 `;
 
 export const HeaderCell = styled.th`
@@ -28,13 +29,18 @@ export const HeaderCell = styled.th`
 
 export const HeaderRow = styled.tr`
   border-bottom: 1px solid #e3e3e3;
+  height: 70px;
+
+  th:nth-child(3) {
+    width: 14%;
+  }
 
   th:nth-child(4) {
     width: 12%;
   }
 
   th:nth-child(6) {
-    width: 17%;
+    width: 18%;
   }
 `;
 
@@ -59,6 +65,4 @@ export const SpinnerContainer = styled.div`
   }
 `;
 
-export const TableBody = styled.tbody<TableBodyProps>`
-  ${({ $hasData }) => ($hasData ? '' : 'height:350px')}
-`;
+export const TableBody = styled.tbody``;

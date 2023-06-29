@@ -54,7 +54,7 @@ const Table = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: Ta
 
   return (
     <Container>
-      <TableContent>
+      <TableContent $hasData={hasData}>
         <TableHeader>
           <HeaderRow>
             {headerValues.map((value, index) => (
@@ -63,7 +63,7 @@ const Table = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: Ta
           </HeaderRow>
         </TableHeader>
 
-        <TableBody $hasData={hasData}>
+        <TableBody>
           {hasData ? (
             <>
               {tableData.map((carData, index) => (
