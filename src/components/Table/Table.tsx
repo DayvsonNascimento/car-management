@@ -1,5 +1,4 @@
-import { useMemo } from 'react';
-import CarCard from './TableRow/TableRow';
+import Row from './TableRow/TableRow';
 
 import { Container, Table, TableHeader, TableRow, HeaderCell, TableBody } from './Table.styled';
 
@@ -13,14 +12,7 @@ interface TableProps {
 }
 
 const CarsTable = ({ tableData, columnsDef, isEditing }: TableProps) => {
-  const getCompleteCarData = useMemo(() => {
-    return tableData.map((carData) => ({
-      ...carData,
-      totalCost: carData.productionCost + carData.transportationCost,
-    }));
-  }, [tableData]);
-
-  const headerValues = columnsDef.map((colum) => colum.headerName as string);
+  const headerValues = columnsDef.map((colum) => colum.headerName);
 
   return (
     <Container>
@@ -34,8 +26,8 @@ const CarsTable = ({ tableData, columnsDef, isEditing }: TableProps) => {
         </TableHeader>
 
         <TableBody>
-          {getCompleteCarData?.map((carData, index) => (
-            <CarCard key={index} rowData={carData} columnsDef={columnsDef} isEditing={isEditing} />
+          {tableData?.map((carData, index) => (
+            <Row key={index} rowData={carData} columnsDef={columnsDef} isEditing={isEditing} />
           ))}
         </TableBody>
       </Table>

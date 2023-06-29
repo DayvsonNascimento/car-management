@@ -7,12 +7,8 @@ import { Event } from 'interfaces/DefaultInput';
 
 import { TableColumn } from 'interfaces/TableColumn';
 
-interface RowData extends CarData {
-  totalCost: number;
-}
-
 interface TableRowProps {
-  rowData: RowData;
+  rowData: CarData;
   columnsDef: TableColumn[];
   isEditing: boolean;
 }
