@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import DefaulInput from 'components/Input/DefaultInput';
-import CustomSelect from 'components/Input/CustomSelect/Select.styled';
+import CustomSelect from 'components/Input/CustomSelect/CustomSelect';
 import Button from 'components/Button/Button';
 
 import { Form, Title, ButtonContainer } from './AddCarForm.styled';

@@ -20,6 +20,20 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+
+  .cancel-button {
+    background-color: white;
+    color: rgb(29, 161, 242);
+    border-color: rgb(29, 161, 242);
+    border: 1px solid rgb(29, 161, 242);
+
+    &:hover {
+      background-color: rgb(244, 246, 246);
+    }
+
+    &:disabled {
+      background-color: rgb(244, 246, 246);
+    }
 `;
 
 export const Title = styled.h1`

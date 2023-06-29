@@ -26,3 +26,12 @@ export const CellInput = styled.input<CellInputPros>`
   font-size: 16px;
   color: #737373;
 `;
+
+export const CellSelect = styled.select<CellInputPros>`
+  background-color: ${({ $isEditing }) => ($isEditing ? '#f6f8fa' : 'transparent')};
+  border: none;
+  width: 91%;
+  padding: 12px 0;
+  font-size: 16px;
+  color: #737373;
+`;

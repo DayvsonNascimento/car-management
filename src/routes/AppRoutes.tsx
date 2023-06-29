@@ -1,4 +1,4 @@
-import HomePage from 'pages/Home/HomePage';
+import HomePage from 'pages/ManagementPanel/ManagementPanel';
 import AddCarPage from 'pages/AddCar/AddCarPage';
 
 import { Routes, Route, Navigate } from 'react-router-dom';

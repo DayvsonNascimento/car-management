@@ -3,21 +3,24 @@ import CarCard from './TableRow/TableRow';
 
 import { Container, Table, TableHeader, TableRow, HeaderCell, TableBody } from './Table.styled';
 
-import { headerValues, columnsDef } from 'utils/consts';
-
 import { CarData } from 'interfaces/Car';
+import { TableColumn } from 'interfaces/TableColumn';
 
 interface TableProps {
   tableData: CarData[];
+  columnsDef: TableColumn[];
+  isEditing: boolean;
 }
 
-const CarsTable = ({ tableData }: TableProps) => {
+const CarsTable = ({ tableData, columnsDef, isEditing }: TableProps) => {
   const getCompleteCarData = useMemo(() => {
     return tableData.map((carData) => ({
       ...carData,
       totalCost: carData.productionCost + carData.transportationCost,
     }));
   }, [tableData]);
+
+  const headerValues = columnsDef.map((colum) => colum.headerName as string);
 
   return (
     <Container>
@@ -32,7 +35,7 @@ const CarsTable = ({ tableData }: TableProps) => {
 
         <TableBody>
           {getCompleteCarData?.map((carData, index) => (
-            <CarCard key={index} rowData={carData} columnsDef={columnsDef} />
+            <CarCard key={index} rowData={carData} columnsDef={columnsDef} isEditing={isEditing} />
           ))}
         </TableBody>
       </Table>

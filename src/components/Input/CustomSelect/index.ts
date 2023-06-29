@@ -1,1 +1,1 @@
-export { default } from './Select.styled';
+export { default } from './CustomSelect';
