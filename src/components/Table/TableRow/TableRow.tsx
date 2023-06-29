@@ -17,18 +17,29 @@ interface TableRowProps {
 const TableRow = ({ rowData, columnsDef, handleUpdate, isEditing }: TableRowProps) => {
   const [rowValues, setRowvalues] = useState(rowData);
 
-  const handleChange = (property: string, event: Event) => {
-    const updatedRow = { ...rowValues, [property]: event.target.value };
+  const handleChange = (
+    property: string,
+    event: Event,
+    parse?: (value: string) => number | undefined,
+  ) => {
+    const targetValue = event?.target.value;
+    const value = typeof parse === 'function' ? parse(targetValue) : targetValue;
 
-    handleUpdate(updatedRow);
-    setRowvalues(updatedRow);
+    if (value !== undefined || event.target.value.length === 0) {
+      const updatedRow = { ...rowValues, [property]: value || '' };
+
+      handleUpdate(updatedRow);
+      setRowvalues(updatedRow);
+    }
   };
 
   return (
     <Container $isEditing={isEditing}>
       {columnsDef.map((item) => {
-        const { field, editable, inputType, cellRender, options } = item;
+        const { field, editable, inputType, options, parser, cellRender } = item;
         const displaySelectCell = inputType === 'select' && isEditing;
+        const displayInputValue = editable !== false && isEditing;
+        const value = displayInputValue ? rowValues[field as keyof CarData] : cellRender(rowValues);
 
         return (
           <RowCell key={field}>
@@ -47,8 +58,8 @@ const TableRow = ({ rowData, columnsDef, handleUpdate, isEditing }: TableRowProp
               </CellSelect>
             ) : (
               <CellInput
-                value={cellRender(rowValues)}
-                onChange={(event: Event) => handleChange(field, event)}
+                value={value}
+                onChange={(event: Event) => handleChange(field, event, parser)}
                 disabled={editable === false || !isEditing}
                 $isEditing={isEditing}
               ></CellInput>

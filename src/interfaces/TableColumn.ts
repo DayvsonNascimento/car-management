@@ -4,5 +4,6 @@ export interface TableColumn {
   editable?: boolean;
   inputType?: string;
   options?: string[];
+  parser?: (value: string) => number | undefined;
   cellRender: (value: any) => string;
 }

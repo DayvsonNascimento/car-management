@@ -10,7 +10,7 @@ import { Form, Title, ButtonContainer } from './AddCarForm.styled';
 
 import { carBrands, popularColors } from 'utils/consts';
 import { validate } from 'utils/validators/addNewCarValidator';
-import { isEmpty } from 'utils/utils';
+import { isEmpty, parseNumberInput } from 'utils/utils';
 
 import { Event } from 'interfaces/DefaultInput';
 
@@ -36,18 +36,15 @@ const AddCarForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const parseNumberInput = (event: Event) => {
-    const inputValue = event?.target.value;
-
-    if (/^\d+$/.test(inputValue)) return parseInt(inputValue, 10);
-  };
-
   const handleChange = (
     property: string,
     event: Event,
-    parse?: (event: Event) => number | undefined,
+    parse?: (value: string) => number | undefined,
   ) => {
-    const value = typeof parse === 'function' ? parse(event) : event?.target.value;
+    const targetValue = event?.target.value;
+    const value = typeof parse === 'function' ? parse(targetValue) : targetValue;
+
+    console.log(targetValue);
 
     if (value !== undefined || event.target.value.length === 0) {
       setFormValues({ ...formValues, [property]: value });

@@ -1,6 +1,6 @@
-import { SetStateAction, Dispatch, useEffect } from 'react';
+import { SetStateAction, Dispatch } from 'react';
 
-import Row from './TableRow/TableRow';
+import TableRow from './TableRow/TableRow';
 
 import { Container, Table, TableHeader, HeaderRow, HeaderCell, TableBody } from './Table.styled';
 
@@ -54,7 +54,7 @@ const CarsTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing }
 
         <TableBody>
           {tableData?.map((carData, index) => (
-            <Row
+            <TableRow
               key={index}
               rowData={carData}
               columnsDef={columnsDef}

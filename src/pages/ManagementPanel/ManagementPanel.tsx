@@ -12,8 +12,9 @@ import { CarData } from 'interfaces/Car';
 import { TableColumn } from 'interfaces/TableColumn';
 
 import { carBrands, popularColors } from 'utils/consts';
+import { parseNumberInput } from 'utils/utils';
 
-const formatNumericValue = (value: number) => value.toLocaleString();
+const formatNumericValue = (value: number) => `$${value.toLocaleString()}`;
 
 const getTotalCost = ({
   productionCost,
@@ -21,7 +22,7 @@ const getTotalCost = ({
 }: {
   productionCost: number;
   transportationCost: number;
-}) => `$${formatNumericValue(productionCost + transportationCost)}`;
+}) => formatNumericValue(productionCost + transportationCost);
 
 const columnsDef: TableColumn[] = [
   { headerName: 'Model', field: 'model', cellRender: (item) => item.model },
@@ -39,15 +40,22 @@ const columnsDef: TableColumn[] = [
     options: popularColors,
     cellRender: (item) => item.mainColor,
   },
-  { headerName: 'Value', field: 'value', cellRender: (item) => formatNumericValue(item.value) },
+  {
+    headerName: 'Value',
+    field: 'value',
+    parser: parseNumberInput,
+    cellRender: (item) => formatNumericValue(item.value),
+  },
   {
     headerName: 'Production Cost',
     field: 'productionCost',
+    parser: parseNumberInput,
     cellRender: (item) => formatNumericValue(item.productionCost),
   },
   {
     headerName: 'Transportation Cost',
     field: 'transportationCost',
+    parser: parseNumberInput,
     cellRender: (item) => formatNumericValue(item.transportationCost),
   },
   {
