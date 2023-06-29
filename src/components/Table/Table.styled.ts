@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface TableBodyProps {
+  $hasData: boolean;
+}
+
 export const Container = styled.div`
   padding: 24px;
   width: 100%;
@@ -36,4 +40,25 @@ export const HeaderRow = styled.tr`
 
 export const TableHeader = styled.thead``;
 
-export const TableBody = styled.tbody``;
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+
+  height: 350px;
+  .spinner {
+    color: rgb(29, 161, 242);
+    width: 4rem;
+    height: 4rem;
+  }
+`;
+
+export const TableBody = styled.tbody<TableBodyProps>`
+  ${({ $hasData }) => ($hasData ? '' : 'height:350px')}
+`;

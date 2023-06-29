@@ -9,12 +9,14 @@ import {
   HeaderRow,
   HeaderCell,
   TableBody,
+  SpinnerContainer,
 } from './Table.styled';
 
 import { CarData } from 'interfaces/Car';
 import { TableDefinition } from 'interfaces/TableDefinition';
 
 import { hasEmptyField } from 'utils/utils';
+import LoadingSpinner from 'components/LoadingSpinner/LoadingSpinner';
 
 interface TableProps {
   tableData: CarData[];
@@ -48,6 +50,8 @@ const Table = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: Ta
     }
   };
 
+  const hasData = !!tableData.length;
+
   return (
     <Container>
       <TableContent>
@@ -59,16 +63,24 @@ const Table = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: Ta
           </HeaderRow>
         </TableHeader>
 
-        <TableBody>
-          {tableData?.map((carData, index) => (
-            <TableRow
-              key={index}
-              rowData={carData}
-              columnsDef={columnsDef}
-              isEditing={isEditing}
-              handleUpdate={handleUpdate}
-            />
-          ))}
+        <TableBody $hasData={hasData}>
+          {hasData ? (
+            <>
+              {tableData.map((carData, index) => (
+                <TableRow
+                  key={index}
+                  rowData={carData}
+                  columnsDef={columnsDef}
+                  isEditing={isEditing}
+                  handleUpdate={handleUpdate}
+                />
+              ))}
+            </>
+          ) : (
+            <SpinnerContainer>
+              <LoadingSpinner className='spinner' />
+            </SpinnerContainer>
+          )}
         </TableBody>
       </TableContent>
     </Container>
