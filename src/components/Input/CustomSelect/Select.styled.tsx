@@ -2,16 +2,11 @@ import { useState } from 'react';
 
 import { Container, Label, Select, ErrorText } from '../Input.styled';
 
-type Event = React.ChangeEvent<HTMLSelectElement>;
+import { DefaulInputProps } from 'interfaces/DefaultInput';
 
-interface DefaulInputProps {
-  label: string;
+interface CustomSelectProps extends DefaulInputProps {
   name: string;
-  value: string | number | string[] | undefined;
   options: string[];
-  errorMessage: string;
-  onChange: (event: Event) => void;
-  onFocus?: () => void;
 }
 
 const CustomSelect = ({
@@ -22,7 +17,7 @@ const CustomSelect = ({
   errorMessage,
   onChange,
   onFocus,
-}: DefaulInputProps) => {
+}: CustomSelectProps) => {
   const [active, setActive] = useState(false);
 
   const handleFocus = () => {

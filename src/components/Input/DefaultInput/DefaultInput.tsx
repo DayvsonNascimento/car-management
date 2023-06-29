@@ -2,16 +2,7 @@ import { useState } from 'react';
 
 import { Container, Label, Input, ErrorText } from '../Input.styled';
 
-type Event = React.ChangeEvent<HTMLInputElement>;
-
-interface DefaulInputProps {
-  type?: string;
-  label: string;
-  value: string | number | string[] | undefined;
-  errorMessage: string;
-  onChange: (event: Event) => void;
-  onFocus?: () => void;
-}
+import { DefaulInputProps } from 'interfaces/DefaultInput';
 
 const DefaulInput = ({ label, value, errorMessage, onChange, onFocus }: DefaulInputProps) => {
   const [active, setActive] = useState(false);
