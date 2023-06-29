@@ -39,6 +39,7 @@ const CustomSelect = ({
         onChange={onChange}
         onFocus={handleFocus}
         onBlur={handleOnBlur}
+        $error={!!errorMessage}
       >
         <option label=' ' />
         {options.map((option) => (

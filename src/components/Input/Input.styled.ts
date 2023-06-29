@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const ERROR_COLOR = '#e02924';
 const STANDARD_COLOR = '#6e7781';
 
-interface LabelProps {
+interface InputProps {
   $error: boolean;
-  $active: boolean;
+  $active?: boolean;
 }
 
 export const Container = styled.div`
@@ -13,7 +13,7 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Label = styled.label<LabelProps>`
+export const Label = styled.label<InputProps>`
   text-align: left;
   margin-bottom: 2px;
 
@@ -36,7 +36,7 @@ export const Label = styled.label<LabelProps>`
   transform: ${({ $active }) => ($active ? ' translateY(-.5rem)' : '')};
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
   margin: 5px 0px 15px 0px;
   padding: 11px 8px 0 6.5px;
   width: 100%;
@@ -46,17 +46,21 @@ export const Input = styled.input`
   box-sizing: border-box;
   font-size: 14px;
   cursor: text;
+
+  ${({ $error }) => ($error ? 'border-color: red;' : '')}
 `;
 
-export const Select = styled.select`
+export const Select = styled.select<InputProps>`
   margin: 5px 0px 15px 0px;
-  padding: 11px 8px 0 2.7px;
+  padding: 11px 8px 0 7.5px;
   width: 100%;
   box-sizing: border-box;
   height: 40px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
   font-size: 14px;
+
+  ${({ $error }) => ($error ? 'border-color: red;' : '')}
 `;
 
 export const ErrorText = styled.div`

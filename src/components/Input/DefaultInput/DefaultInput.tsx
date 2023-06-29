@@ -26,6 +26,7 @@ const DefaulInput = ({ label, value, errorMessage, onChange, onFocus }: DefaulIn
         onChange={onChange}
         onFocus={handleFocus}
         onBlur={handleOnBlur}
+        $error={!!errorMessage}
       />
       <ErrorText>{errorMessage}</ErrorText>
     </Container>

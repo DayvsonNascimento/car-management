@@ -17,3 +17,11 @@ textarea:focus {
   outline: none !important;
   border-color: rgb(29, 161, 242);
 }
+
+select {
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: url(assets/arrow-icon.svg) no-repeat right;
+  background-position: calc(100% - 0.75rem) center !important;
+}
