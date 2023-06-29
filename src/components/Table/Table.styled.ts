@@ -8,7 +8,7 @@ export const Container = styled.div`
   border-radius: 5px;
 `;
 
-export const Table = styled.table`
+export const TableContent = styled.table`
   width: 100%;
   border-collapse: collapse;
 `;

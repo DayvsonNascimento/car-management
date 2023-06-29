@@ -2,7 +2,14 @@ import { SetStateAction, Dispatch } from 'react';
 
 import TableRow from './TableRow/TableRow';
 
-import { Container, Table, TableHeader, HeaderRow, HeaderCell, TableBody } from './Table.styled';
+import {
+  Container,
+  TableContent,
+  TableHeader,
+  HeaderRow,
+  HeaderCell,
+  TableBody,
+} from './Table.styled';
 
 import { CarData } from 'interfaces/Car';
 import { TableDefinition } from 'interfaces/TableDefinition';
@@ -17,7 +24,7 @@ interface TableProps {
   isEditing: boolean;
 }
 
-const CustomTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: TableProps) => {
+const Table = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: TableProps) => {
   const headerValues = columnsDef.map((colum) => colum.headerName);
 
   const updateTableData = (newRow: CarData) => {
@@ -43,7 +50,7 @@ const CustomTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing
 
   return (
     <Container>
-      <Table>
+      <TableContent>
         <TableHeader>
           <HeaderRow>
             {headerValues.map((value, index) => (
@@ -63,9 +70,9 @@ const CustomTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing
             />
           ))}
         </TableBody>
-      </Table>
+      </TableContent>
     </Container>
   );
 };
 
-export default CustomTable;
+export default Table;
