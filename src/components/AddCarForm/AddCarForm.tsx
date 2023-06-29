@@ -8,15 +8,13 @@ import Button from 'components/Button/Button';
 
 import { Form, Title, ButtonContainer } from './AddCarForm.styled';
 
-import { CarData } from 'interfaces/Car';
-
 import { carBrands, popularColors } from 'utils/consts';
 import { validate } from 'utils/validators/addNewCarValidator';
 import { isEmpty } from 'utils/utils';
 
-import { addCar } from 'services/Cars/cars';
+import { Event } from 'interfaces/DefaultInput';
 
-type Event = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
+import { addCar } from 'services/Cars/cars';
 
 const AddCarForm = () => {
   const [formValues, setFormValues] = useState({

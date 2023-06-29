@@ -30,7 +30,7 @@ export const TableRow = styled.tr`
   }
 
   th:nth-child(6) {
-    width: 20%;
+    width: 19%;
   }
 `;
 

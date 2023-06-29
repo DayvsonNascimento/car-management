@@ -1,4 +1,4 @@
-type Event = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
+export type Event = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
 
 export interface DefaulInputProps {
   label: string;
