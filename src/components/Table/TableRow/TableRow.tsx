@@ -25,7 +25,7 @@ const TableRow = ({ rowData, columnsDef, isEditing }: TableRowProps) => {
   };
 
   return (
-    <Container>
+    <Container $isEditing={isEditing}>
       {columnsDef.map((item) => {
         const { field, editable, inputType, cellRender, options } = item;
         const displaySelectCell = inputType === 'select' && isEditing;
