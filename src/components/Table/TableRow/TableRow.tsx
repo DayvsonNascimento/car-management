@@ -10,14 +10,18 @@ import { TableColumn } from 'interfaces/TableColumn';
 interface TableRowProps {
   rowData: CarData;
   columnsDef: TableColumn[];
+  handleUpdate: (element: CarData) => void;
   isEditing: boolean;
 }
 
-const TableRow = ({ rowData, columnsDef, isEditing }: TableRowProps) => {
+const TableRow = ({ rowData, columnsDef, handleUpdate, isEditing }: TableRowProps) => {
   const [rowValues, setRowvalues] = useState(rowData);
 
   const handleChange = (property: string, event: Event) => {
-    setRowvalues({ ...rowValues, [property]: event.target.value });
+    const updatedRow = { ...rowValues, [property]: event.target.value };
+
+    handleUpdate(updatedRow);
+    setRowvalues(updatedRow);
   };
 
   return (

@@ -61,6 +61,7 @@ const columnsDef: TableColumn[] = [
 const ManagementPanel = () => {
   const [carData, setCarData] = useState<CarData[]>([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [disableSave, setDisableSave] = useState(false);
   const navigate = useNavigate();
 
   const getCarsData = async () => {
@@ -80,7 +81,12 @@ const ManagementPanel = () => {
           <Button disabled={isEditing} action={() => navigate('/new')} text='Add new' />
           <Button show={!isEditing} action={() => setIsEditing(true)} text='Update' />
 
-          <Button show={isEditing} action={() => setIsEditing(true)} text='Save' />
+          <Button
+            show={isEditing}
+            disabled={disableSave}
+            action={() => setIsEditing(true)}
+            text='Save'
+          />
           <Button
             show={isEditing}
             className={'cancel-button'}
@@ -89,7 +95,13 @@ const ManagementPanel = () => {
           />
         </ButtonContainer>
 
-        <Table tableData={carData} columnsDef={columnsDef} isEditing={isEditing} />
+        <Table
+          tableData={carData}
+          columnsDef={columnsDef}
+          isEditing={isEditing}
+          setData={setCarData}
+          setDisableSave={setDisableSave}
+        />
       </ContentContainer>
     </Container>
   );

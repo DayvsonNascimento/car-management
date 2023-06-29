@@ -1,4 +1,5 @@
 export interface CarData {
+  id: string;
   model: string;
   brand: string;
   mainColor: string;
