@@ -30,7 +30,7 @@ const CustomSelect = ({
 
   return (
     <Container>
-      <Label htmlFor={label} error={!!errorMessage} active={active || !!value || !!errorMessage}>
+      <Label htmlFor={label} $error={!!errorMessage} $active={active || !!value || !!errorMessage}>
         {label}
       </Label>
       <Select

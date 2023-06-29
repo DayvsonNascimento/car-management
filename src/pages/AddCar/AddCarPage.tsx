@@ -1,10 +1,10 @@
-import AddCar from 'components/AddCar';
+import AddCarForm from 'components/AddCarForm';
 import { Container } from 'pages/Home/HomePage.styled';
 
 const AddCarPage = () => {
   return (
     <Container>
-      <AddCar />
+      <AddCarForm />
     </Container>
   );
 };

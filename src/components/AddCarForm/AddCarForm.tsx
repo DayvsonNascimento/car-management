@@ -6,14 +6,19 @@ import DefaulInput from 'components/Input/DefaultInput';
 import CustomSelect from 'components/Input/CustomSelect/Select.styled';
 import Button from 'components/Button/Button';
 
-import { Form, Title, ButtonContainer } from './AddCar.styled';
+import { Form, Title, ButtonContainer } from './AddCarForm.styled';
+
+import { CarData } from 'interfaces/Car';
 
 import { carBrands, popularColors } from 'utils/consts';
 import { validate } from 'utils/validators/addNewCarValidator';
+import { isEmpty } from 'utils/utils';
+
+import { addCar } from 'services/Cars/cars';
 
 type Event = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
 
-const AddCarPage = () => {
+const AddCarForm = () => {
   const [formValues, setFormValues] = useState({
     model: '',
     brand: '',
@@ -50,13 +55,19 @@ const AddCarPage = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleFocus = (property: string) => setErrors({ ...errors, [property]: '' });
+
+  const handleSubmit = async () => {
     const formErrors = validate(formValues);
 
-    setErrors(formErrors);
-  };
+    if (isEmpty(formErrors)) {
+      await addCar(formValues);
 
-  const handleFocus = (property: string) => setErrors({ ...errors, [property]: '' });
+      navigate('/');
+    } else {
+      setErrors(formErrors);
+    }
+  };
 
   return (
     <Form>
@@ -122,10 +133,10 @@ const AddCarPage = () => {
           action={() => navigate('/')}
         />
 
-        <Button disabled={false} text='Save' action={handleSubmit} />
+        <Button disabled={!isEmpty(errors)} text='Save' action={handleSubmit} />
       </ButtonContainer>
     </Form>
   );
 };
 
-export default AddCarPage;
+export default AddCarForm;

@@ -20,6 +20,11 @@ export const CustomButton = styled.button`
   &:disabled {
     cursor: auto;
     background-color: rgb(29, 161, 242, 0.5);
+    border: 1px solid rgb(29, 161, 242, 0) !important;
+
+    &:hover {
+      background-color: rgb(29, 161, 242, 0.5);
+    }
   }
 
   &:hover {

@@ -4,8 +4,8 @@ const ERROR_COLOR = '#e02924';
 const STANDARD_COLOR = '#656d76';
 
 interface LabelProps {
-  active: boolean;
-  error: boolean;
+  $error: boolean;
+  $active: boolean;
 }
 
 export const Container = styled.div`
@@ -23,8 +23,8 @@ export const Label = styled.label<LabelProps>`
   left: 0.5rem;
   font-weight: 300;
   top: 1rem;
-  font-size: ${({ active }) => (active ? '.7rem' : '0.9rem')};
-  color: ${({ error }) => (error ? ERROR_COLOR : STANDARD_COLOR)};
+  font-size: ${({ $active }) => ($active ? '.7rem' : '0.9rem')};
+  color: ${({ $error }) => ($error ? ERROR_COLOR : STANDARD_COLOR)};
   letter-spacing: 0.005625rem;
   pointer-events: none;
   transition: all 0.2s ease-in;
@@ -34,29 +34,30 @@ export const Label = styled.label<LabelProps>`
     background: #fff;
   }
 
-  transform: ${({ active }) => (active ? ' translateY(-.5rem)' : '')};
+  transform: ${({ $active }) => ($active ? ' translateY(-.5rem)' : '')};
 `;
 
 export const Input = styled.input`
   margin: 5px 0px 15px 0px;
-  padding: 10px 8px 0 6px;
+  padding: 11px 8px 0 6px;
   width: 100%;
   height: 40px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
   box-sizing: border-box;
-
+  font-size: 14px;
   cursor: text;
 `;
 
 export const Select = styled.select`
   margin: 5px 0px 15px 0px;
-  padding: 10px 8px 0 2.5px;
+  padding: 11px 8px 0 2.5px;
   width: 100%;
   box-sizing: border-box;
   height: 40px;
   border-radius: 4px;
   border: 1px solid #d4d4d4;
+  font-size: 14px;
 `;
 
 export const ErrorText = styled.div`
