@@ -78,6 +78,16 @@ const ManagementPanel = () => {
     setCarData(response);
   };
 
+  const saveCarData = async () => {
+    const response = await fetchCarsData();
+
+    if (response) {
+      navigate('/');
+    }
+
+    setDisableSave(false);
+  };
+
   useEffect(() => {
     getCarsData();
   }, []);

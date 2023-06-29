@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-import { Container, RowCell, CellInput, CellSelect } from './TableRow.styled';
+import TableCell from '../TableCell/TableCell';
+
+import { Container } from './TableRow.styled';
 
 import { CarData } from 'interfaces/Car';
 import { Event } from 'interfaces/DefaultInput';
@@ -35,38 +37,15 @@ const TableRow = ({ rowData, columnsDef, handleUpdate, isEditing }: TableRowProp
 
   return (
     <Container $isEditing={isEditing}>
-      {columnsDef.map((item) => {
-        const { field, editable, inputType, options, parser, cellRender } = item;
-        const displaySelectCell = inputType === 'select' && isEditing;
-        const displayInputValue = editable !== false && isEditing;
-        const value = displayInputValue ? rowValues[field as keyof CarData] : cellRender(rowValues);
-
-        return (
-          <RowCell key={field}>
-            {displaySelectCell ? (
-              <CellSelect
-                value={cellRender(rowValues)}
-                onChange={(event: Event) => handleChange(field, event)}
-                disabled={editable === false || !isEditing}
-                $isEditing={isEditing}
-              >
-                {options?.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </CellSelect>
-            ) : (
-              <CellInput
-                value={value}
-                onChange={(event: Event) => handleChange(field, event, parser)}
-                disabled={editable === false || !isEditing}
-                $isEditing={isEditing}
-              ></CellInput>
-            )}
-          </RowCell>
-        );
-      })}
+      {columnsDef.map((itemDefinition, index) => (
+        <TableCell
+          key={index}
+          rowValues={rowValues}
+          itemDefinition={itemDefinition}
+          handleChange={handleChange}
+          isEditing={isEditing}
+        />
+      ))}
     </Container>
   );
 };
