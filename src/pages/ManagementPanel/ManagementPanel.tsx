@@ -78,21 +78,15 @@ const ManagementPanel = () => {
       <ContentContainer>
         <ButtonContainer>
           <Button disabled={isEditing} action={() => navigate('/new')} text='Add new' />
-          {!isEditing && (
-            <Button disabled={false} action={() => setIsEditing(true)} text='Update' />
-          )}
+          <Button show={!isEditing} action={() => setIsEditing(true)} text='Update' />
 
-          {isEditing && (
-            <>
-              <Button disabled={false} action={() => setIsEditing(true)} text='Save' />
-              <Button
-                disabled={false}
-                className={'cancel-button'}
-                action={() => navigate(0)}
-                text='Cancel'
-              />
-            </>
-          )}
+          <Button show={isEditing} action={() => setIsEditing(true)} text='Save' />
+          <Button
+            show={isEditing}
+            className={'cancel-button'}
+            action={() => navigate(0)}
+            text='Cancel'
+          />
         </ButtonContainer>
 
         <Table tableData={carData} columnsDef={columnsDef} isEditing={isEditing} />
