@@ -17,7 +17,7 @@ interface TableProps {
   isEditing: boolean;
 }
 
-const CarsTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: TableProps) => {
+const CustomTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: TableProps) => {
   const headerValues = columnsDef.map((colum) => colum.headerName);
 
   const updateTableData = (newRow: CarData) => {
@@ -68,4 +68,4 @@ const CarsTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing }
   );
 };
 
-export default CarsTable;
+export default CustomTable;

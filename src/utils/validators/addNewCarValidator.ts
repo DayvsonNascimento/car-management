@@ -49,7 +49,5 @@ export const validate = (fields: Fields) => {
     errors.transportationCost = 'Decimals are not allowed';
   }
 
-  console.log(errors);
-
   return errors;
 };

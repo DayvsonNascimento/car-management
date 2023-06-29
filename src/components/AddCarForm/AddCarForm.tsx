@@ -44,8 +44,6 @@ const AddCarForm = () => {
     const targetValue = event?.target.value;
     const value = typeof parse === 'function' ? parse(targetValue) : targetValue;
 
-    console.log(targetValue);
-
     if (value !== undefined || event.target.value.length === 0) {
       setFormValues({ ...formValues, [property]: value });
     }

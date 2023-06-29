@@ -32,7 +32,7 @@ export const ButtonContainer = styled.div`
     }
 
     &:disabled {
-      background-color: rgb(244, 246, 246);
+      background-color: rgb(230 234 236);
     }
 `;
 

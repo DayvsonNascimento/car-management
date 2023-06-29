@@ -6,7 +6,7 @@ import Button from 'components/Button';
 
 import { Container, ContentContainer, ButtonContainer } from './ManagementPanel.styled';
 
-import { fetchCarsData } from 'services/Cars/cars';
+import { fetchCarsData, updateCarsData } from 'services/Cars/cars';
 
 import { CarData } from 'interfaces/Car';
 import { TableDefinition } from 'interfaces/TableDefinition';
@@ -70,6 +70,7 @@ const ManagementPanel = () => {
   const [carData, setCarData] = useState<CarData[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [disableSave, setDisableSave] = useState(false);
+  const [hasSubmittedData, setHasSubmittedData] = useState(false);
   const navigate = useNavigate();
 
   const getCarsData = async () => {
@@ -79,10 +80,12 @@ const ManagementPanel = () => {
   };
 
   const saveCarData = async () => {
-    const response = await fetchCarsData();
+    setHasSubmittedData(true);
+
+    const response = await updateCarsData(carData);
 
     if (response) {
-      navigate('/');
+      navigate(0);
     }
 
     setDisableSave(false);
@@ -102,11 +105,13 @@ const ManagementPanel = () => {
           <Button
             show={isEditing}
             disabled={disableSave}
-            action={() => setIsEditing(true)}
+            loading={hasSubmittedData}
+            action={() => saveCarData()}
             text='Save'
           />
           <Button
             show={isEditing}
+            disabled={hasSubmittedData}
             className={'cancel-button'}
             action={() => navigate(0)}
             text='Cancel'
