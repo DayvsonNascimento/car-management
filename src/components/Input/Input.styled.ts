@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ERROR_COLOR = '#e02924';
-const STANDARD_COLOR = '#656d76';
+const STANDARD_COLOR = '#6e7781';
 
 interface LabelProps {
   $error: boolean;
@@ -16,14 +16,13 @@ export const Container = styled.div`
 export const Label = styled.label<LabelProps>`
   text-align: left;
   margin-bottom: 2px;
-  font-size: 10px;
 
   z-index: 2;
   position: absolute;
   left: 0.5rem;
-  font-weight: 300;
+  font-weight: 400;
   top: 1rem;
-  font-size: ${({ $active }) => ($active ? '.7rem' : '0.9rem')};
+  font-size: ${({ $active }) => ($active ? '.7rem' : '0.85rem')};
   color: ${({ $error }) => ($error ? ERROR_COLOR : STANDARD_COLOR)};
   letter-spacing: 0.005625rem;
   pointer-events: none;

@@ -11,7 +11,6 @@ interface ButtonProps {
 }
 
 const Button = ({ disabled, text, className, loading = false, action }: ButtonProps) => {
-  console.log(disabled);
   return (
     <Container>
       <CustomButton className={className} type='button' disabled={disabled} onClick={action}>
