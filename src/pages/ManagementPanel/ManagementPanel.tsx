@@ -21,7 +21,7 @@ const getTotalCost = ({
 }: {
   productionCost: number;
   transportationCost: number;
-}) => formatNumericValue(productionCost + transportationCost);
+}) => `$${formatNumericValue(productionCost + transportationCost)}`;
 
 const columnsDef: TableColumn[] = [
   { headerName: 'Model', field: 'model', cellRender: (item) => item.model },

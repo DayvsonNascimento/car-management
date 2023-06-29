@@ -22,7 +22,7 @@ export const HeaderCell = styled.th`
   color: #1b3a57;
 `;
 
-export const TableRow = styled.tr`
+export const HeaderRow = styled.tr`
   border-bottom: 1px solid #e3e3e3;
 
   th:nth-child(4) {
@@ -30,11 +30,9 @@ export const TableRow = styled.tr`
   }
 
   th:nth-child(6) {
-    width: 19%;
+    width: 17%;
   }
 `;
-
-export const Option = styled.option``;
 
 export const TableHeader = styled.thead``;
 

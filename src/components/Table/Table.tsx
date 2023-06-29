@@ -2,7 +2,7 @@ import { SetStateAction, Dispatch, useEffect } from 'react';
 
 import Row from './TableRow/TableRow';
 
-import { Container, Table, TableHeader, TableRow, HeaderCell, TableBody } from './Table.styled';
+import { Container, Table, TableHeader, HeaderRow, HeaderCell, TableBody } from './Table.styled';
 
 import { CarData } from 'interfaces/Car';
 import { TableColumn } from 'interfaces/TableColumn';
@@ -45,11 +45,11 @@ const CarsTable = ({ tableData, columnsDef, setData, setDisableSave, isEditing }
     <Container>
       <Table>
         <TableHeader>
-          <TableRow>
+          <HeaderRow>
             {headerValues.map((value, index) => (
               <HeaderCell key={index}>{value}</HeaderCell>
             ))}
-          </TableRow>
+          </HeaderRow>
         </TableHeader>
 
         <TableBody>
