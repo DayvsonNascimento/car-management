@@ -1,4 +1,4 @@
-export interface TableColumn {
+export interface TableDefinition {
   headerName: string;
   field: string;
   editable?: boolean;

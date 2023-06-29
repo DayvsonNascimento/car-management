@@ -5,13 +5,13 @@ import TableRow from './TableRow/TableRow';
 import { Container, Table, TableHeader, HeaderRow, HeaderCell, TableBody } from './Table.styled';
 
 import { CarData } from 'interfaces/Car';
-import { TableColumn } from 'interfaces/TableColumn';
+import { TableDefinition } from 'interfaces/TableDefinition';
 
 import { hasEmptyField } from 'utils/utils';
 
 interface TableProps {
   tableData: CarData[];
-  columnsDef: TableColumn[];
+  columnsDef: TableDefinition[];
   setData: Dispatch<SetStateAction<CarData[]>>;
   setDisableSave: Dispatch<SetStateAction<boolean>>;
   isEditing: boolean;

@@ -7,11 +7,11 @@ import { Container } from './TableRow.styled';
 import { CarData } from 'interfaces/Car';
 import { Event } from 'interfaces/DefaultInput';
 
-import { TableColumn } from 'interfaces/TableColumn';
+import { TableDefinition } from 'interfaces/TableDefinition';
 
 interface TableRowProps {
   rowData: CarData;
-  columnsDef: TableColumn[];
+  columnsDef: TableDefinition[];
   handleUpdate: (element: CarData) => void;
   isEditing: boolean;
 }

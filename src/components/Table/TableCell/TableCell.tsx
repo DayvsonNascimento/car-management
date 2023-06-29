@@ -1,13 +1,13 @@
-import { RowCell, CellInput, CellSelect } from '../TableRow/TableRow.styled';
+import { RowCell, CellInput, CellSelect } from './TableCell.styled';
 
 import { CarData } from 'interfaces/Car';
 import { Event } from 'interfaces/DefaultInput';
 
-import { TableColumn } from 'interfaces/TableColumn';
+import { TableDefinition } from 'interfaces/TableDefinition';
 
 interface TableCellrops {
   rowValues: CarData;
-  itemDefinition: TableColumn;
+  itemDefinition: TableDefinition;
   isEditing: boolean;
   handleChange: (
     propery: string,

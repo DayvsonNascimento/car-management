@@ -9,7 +9,7 @@ import { Container, ContentContainer, ButtonContainer } from './ManagementPanel.
 import { fetchCarsData } from 'services/Cars/cars';
 
 import { CarData } from 'interfaces/Car';
-import { TableColumn } from 'interfaces/TableColumn';
+import { TableDefinition } from 'interfaces/TableDefinition';
 
 import { carBrands, popularColors } from 'utils/consts';
 import { parseNumberInput } from 'utils/utils';
@@ -24,7 +24,7 @@ const getTotalCost = ({
   transportationCost: number;
 }) => formatNumericValue(productionCost + transportationCost);
 
-const columnsDef: TableColumn[] = [
+const columnsDef: TableDefinition[] = [
   { headerName: 'Model', field: 'model', cellRender: (item) => item.model },
   {
     headerName: 'Brand',
