@@ -1,12 +1,28 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import CarsTable from 'components/CarsTable';
+import Table from 'components/Table';
 import Button from 'components/Button';
 
 import { Container, ContentContainer, ButtonContainer } from './HomePage.styled';
 
+import { fetchCarsData } from 'services/Cars/cars';
+
+import { CarData } from 'interfaces/Car';
+
 const HomePage = () => {
+  const [carData, setCarData] = useState<CarData[]>([]);
   const navigate = useNavigate();
+
+  const getCarsData = async () => {
+    const response = await fetchCarsData();
+
+    setCarData(response);
+  };
+
+  useEffect(() => {
+    getCarsData();
+  }, []);
 
   return (
     <Container>
@@ -16,7 +32,7 @@ const HomePage = () => {
           <Button disabled={false} text='Update' />
         </ButtonContainer>
 
-        <CarsTable />
+        <Table tableData={carData} />
       </ContentContainer>
     </Container>
   );

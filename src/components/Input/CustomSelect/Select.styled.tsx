@@ -7,7 +7,7 @@ type Event = React.ChangeEvent<HTMLSelectElement>;
 interface DefaulInputProps {
   label: string;
   name: string;
-  value: string | number | readonly string[] | undefined;
+  value: string | number | string[] | undefined;
   options: string[];
   errorMessage: string;
   onChange: (event: Event) => void;

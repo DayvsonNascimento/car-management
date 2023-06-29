@@ -7,7 +7,7 @@ type Event = React.ChangeEvent<HTMLInputElement>;
 interface DefaulInputProps {
   type?: string;
   label: string;
-  value: string | number | readonly string[] | undefined;
+  value: string | number | string[] | undefined;
   errorMessage: string;
   onChange: (event: Event) => void;
   onFocus?: () => void;
