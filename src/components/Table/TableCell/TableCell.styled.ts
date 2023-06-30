@@ -8,7 +8,7 @@ export const RowCell = styled.td`
   padding: 12px 0;
   font-size: 16px;
   color: #737373;
-  -webkit-text-fill-color: #737373
+  -webkit-text-fill-color: #737373;
 `;
 
 export const CellInput = styled.input<CellProps>`
@@ -19,7 +19,8 @@ export const CellInput = styled.input<CellProps>`
   padding: 12px 0;
   font-size: 16px;
   color: #737373;
-
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const CellSelect = styled.select<CellProps>`
@@ -30,4 +31,6 @@ export const CellSelect = styled.select<CellProps>`
   padding: 12px 0;
   font-size: 16px;
   color: #737373;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
