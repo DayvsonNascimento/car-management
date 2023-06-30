@@ -10,6 +10,8 @@ export const Container = styled.div`
   background-color: #ffffff;
   box-shadow: 0 1px 1px 1px #e3e3e3;
   border-radius: 5px;
+  margin-bottom: 2rem;
+  overflow-x: auto;
 `;
 
 export const TableContent = styled.table<TableContentProps>`
