@@ -78,7 +78,9 @@ const Table = ({ tableData, columnsDef, setData, setDisableSave, isEditing }: Ta
             </>
           ) : (
             <SpinnerContainer>
-              <LoadingSpinner className='spinner' />
+              <td>
+                <LoadingSpinner customClass='spinner' />
+              </td>
             </SpinnerContainer>
           )}
         </TableBody>

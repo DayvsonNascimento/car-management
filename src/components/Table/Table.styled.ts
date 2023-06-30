@@ -48,7 +48,7 @@ export const HeaderRow = styled.tr`
 
 export const TableHeader = styled.thead``;
 
-export const SpinnerContainer = styled.div`
+export const SpinnerContainer = styled.tr`
   display: flex;
   justify-content: center;
   align-items: center;

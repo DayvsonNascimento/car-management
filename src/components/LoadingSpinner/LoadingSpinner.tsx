@@ -1,12 +1,12 @@
 import { Container, Spinner } from './LoadingSpinner.styled';
 
 interface LoadingSpinnerProps {
-  className?: string;
+  customClass?: string;
 }
 
-const LoadingSpinner = ({ className }: LoadingSpinnerProps) => {
+const LoadingSpinner = ({ customClass }: LoadingSpinnerProps) => {
   return (
-      <Spinner className={className}/>
+      <Spinner className={customClass}/>
   );
 };
 

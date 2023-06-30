@@ -102,7 +102,7 @@ const ManagementPanel = () => {
           <Button
             show={isEditing}
             disabled={hasSubmittedData}
-            className={'cancel-button'}
+            customClass={'cancel-button'}
             action={() => navigate(0)}
             text='Cancel'
           />

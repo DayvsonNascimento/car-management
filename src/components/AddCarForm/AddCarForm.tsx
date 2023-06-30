@@ -125,7 +125,7 @@ const AddCarForm = () => {
 
       <ButtonContainer>
         <Button
-          className={'cancel-button'}
+          customClass={'cancel-button'}
           disabled={isLoading}
           text='Cancel'
           action={() => navigate('/')}
