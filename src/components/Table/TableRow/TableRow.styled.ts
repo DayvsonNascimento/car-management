@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-type ContaienerProps = {
+type ContainerProps = {
   $isEditing: boolean;
 };
 
-export const Container = styled.tr<ContaienerProps>`
+export const Container = styled.tr<ContainerProps>`
   border-bottom: 1px solid #e3e3e3;
 
   &:hover {
