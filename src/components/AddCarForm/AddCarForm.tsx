@@ -45,11 +45,12 @@ const AddCarForm = () => {
     const value = typeof parse === 'function' ? parse(targetValue) : targetValue;
 
     if (value !== undefined || event.target.value.length === 0) {
-      setFormValues({ ...formValues, [property]: value });
+      setFormValues((previous) => ({ ...previous, [property]: value }));
     }
   };
 
-  const handleFocus = (property: string) => setErrors({ ...errors, [property]: '' });
+  const handleFocus = (property: string) =>
+    setErrors((previous) => ({ ...previous, [property]: '' }));
 
   const handleSubmit = async () => {
     setIsLoading(true);
