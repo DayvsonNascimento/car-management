@@ -13,6 +13,7 @@ code {
 }
 
 input:focus,
+select:focus,
 textarea:focus {
   outline: none !important;
   border-color: rgb(29, 161, 242);

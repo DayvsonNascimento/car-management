@@ -19,8 +19,8 @@ interface TableCellrops {
 const TableCell = ({ rowValues, itemDefinition, isEditing, handleChange }: TableCellrops) => {
   const { field, editable, inputType, options, parser, cellRender } = itemDefinition;
   const displaySelectCell = inputType === 'select' && isEditing;
-  const displayInputValue = editable !== false && isEditing;
-  const value = displayInputValue ? rowValues[field as keyof CarData] : cellRender(rowValues);
+  const editEnabled = editable !== false && isEditing;
+  const value = editEnabled ? rowValues[field as keyof CarData] : cellRender(rowValues);
 
   return (
     <RowCell>
@@ -42,7 +42,7 @@ const TableCell = ({ rowValues, itemDefinition, isEditing, handleChange }: Table
           value={value}
           onChange={(event: Event) => handleChange(field, event, parser)}
           disabled={editable === false || !isEditing}
-          $isEditing={isEditing}
+          $isEditing={editEnabled}
         ></CellInput>
       )}
     </RowCell>
