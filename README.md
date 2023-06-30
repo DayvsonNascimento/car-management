@@ -1,6 +1,7 @@
 # Car management App
 
 A web application to manage cars, adding and updating existing car data.
+The back-end used is a deployed Firebase app.
 
 ## Available Scripts
 
